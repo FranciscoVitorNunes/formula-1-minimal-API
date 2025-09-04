@@ -1,18 +1,19 @@
 import fastify from 'fastify';
 import { Interface } from 'readline';
-
+import cors from "@fastify/cors"
 const app = fastify({logger: true});
+
+app.register(cors,{
+    origin: "*",
+})
+
 const drivers = [
     {id:1, nome:"masr"},
-    {id:2, nome:"masr"},
-    {id:3, nome:"masr"},
-    {id:4, nome:"masr"},
+
 ]
 const teams=[
     {id:1, nome:"ferari"},
-    {id:2, nome:"mercedes"},
-    {id:3, nome:"redull"},
-    {id:4, nome:"outra"},
+
 ]
 app.get('/teams',async(req,res)=>{
     res.type('application/json').code(200);
